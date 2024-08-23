@@ -26,4 +26,6 @@ yarn dev
 
 ![Example page](examples/example-main.png "dungeon crawler intro")
 
+Each page has a story and an input to proceed based on the input choice. If at any point you want to restart submit no 
+answer (blank) and the dungeon will restart from the beginning.
 More example images of a generated story can be found in the [examples](examples) folder. 
