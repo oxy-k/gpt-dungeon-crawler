@@ -26,6 +26,7 @@ html {
 body {
 	min-height: 100vh;
 	margin: 0;
+	background: rgba(26, 26, 26, 1);
 }
 
 h1,

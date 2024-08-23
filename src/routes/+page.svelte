@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import SvelteMarkdown from 'svelte-markdown';
+    import 'doodle.css/doodle.css'
 	import imgBg from '$lib/images/bg-image.png';
 
 	let imgSrc: string = '';
@@ -24,6 +25,7 @@
 			const json = await response.json();
 			imgSrc = json.imgSrc;
 			text = s;
+            window.scrollTo(0,0)
 		} catch (e: any) {
 			error = e;
 		}
@@ -61,10 +63,10 @@
 </svelte:head>
 
 <section>
-	<div class="text">
-		<h1>GPT Dungeon Crawler</h1>
-		<hr />
+    <h1>GPT Dungeon Crawler</h1>
+    <div class="img" style="background-image: url({imgSrc || imgBg})"></div>
 
+    <div class="text">
 		{#if text}
 			<SvelteMarkdown source={text} />
 
@@ -72,7 +74,7 @@
 				<div class="error">{error}</div>
 			{/if}
 
-			<div class="input">
+			<div class="input doodle">
 				<input bind:value={answer} placeholder="Your answer" />
 				<button on:click={generateText} disabled={loading}>
 					{#if !loading}
@@ -86,41 +88,31 @@
 			Loading ...
 		{/if}
 	</div>
-	<div class="img" style="background-image: url({imgSrc || imgBg})"></div>
 </section>
 
 <style>
 	section {
 		display: flex;
+        flex-direction: column;
 		width: 100%;
 		min-height: 100vh;
-		flex: 0.6;
+        background: rgba(26, 26, 26, 1);
 	}
 
 	.img {
-		position: fixed;
-		right: 0;
-		top: 0;
-		width: 50%;
-		height: 100%;
+		height: 760px;
 		background-attachment: fixed;
-		background-color: var(--color-bg-1);
+        background: rgb(33, 33, 33);
 		background-size: cover;
 		background-position: center center;
 	}
 
 	h1 {
-		margin: 0;
 		width: 100%;
 		color: #cec0ac;
 		text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.6);
 		font-size: 1.2rem;
-		font-family: monospace;
-	}
-
-	hr {
-		background: #cec0ac;
-		width: 10%;
+		font-family: serif;
 	}
 
 	.error {
@@ -133,11 +125,27 @@
 		align-items: center;
 	}
 
+    .doodle {
+        background: transparent;
+        color: white;
+    }
+
+    .doodle input {
+        border-color: white;
+        font-family: 'Caveat', cursive;
+        color: #e8e8e8;
+    }
+
+    .doodle button {
+        color: rgb(129, 129, 129);
+        font-family: 'Caveat', cursive;
+        cursor: pointer;
+    }
+
 	.text {
-		width: 50%;
 		white-space: pre-line;
 		background: rgba(26, 26, 26, 1);
 		color: #dadada;
-		padding: 1rem;
+		padding: 0.8rem 2rem;
 	}
 </style>

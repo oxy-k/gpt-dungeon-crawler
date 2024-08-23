@@ -33,6 +33,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"doodle.css": "^0.0.2",
 		"dotenv": "^16.4.5",
 		"openai": "^4.55.4",
 		"svelte-markdown": "^0.4.1"

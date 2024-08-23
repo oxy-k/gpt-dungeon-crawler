@@ -844,6 +844,11 @@ dir-glob@^3.0.1:
   dependencies:
     path-type "^4.0.0"
 
+doodle.css@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/doodle.css/-/doodle.css-0.0.2.tgz#163be50ee8fc81ac1426fa02ea5ebb0553990207"
+  integrity sha512-WHIPpiPAG+GgdSOu9tSfRisvSCClEobSMKZ2JmvbawKKO9aff2SIhlZC0w3nE8/k+kph1NS8tON+3VJiUpl1oA==
+
 dotenv@^16.4.5:
   version "16.4.5"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.4.5.tgz#cdd3b3b604cb327e286b4762e13502f717cb099f"
