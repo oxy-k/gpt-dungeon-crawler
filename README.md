@@ -24,4 +24,6 @@ yarn dev
 
 ## Examples
 
-Example images of a generated story can be found in the [examples](examples) folder. 
+![Example page](examples/example-main.png "dungeon crawler intro")
+
+More example images of a generated story can be found in the [examples](examples) folder. 
