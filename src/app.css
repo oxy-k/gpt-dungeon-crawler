@@ -3,7 +3,9 @@
 html {
 	box-sizing: border-box;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
 	box-sizing: inherit;
 }
 
@@ -17,7 +19,7 @@ html {
 	--column-width: 42rem;
 	--column-margin-top: 4rem;
 	color: var(--color-text);
-	font-family: "Caveat", cursive;
+	font-family: 'Caveat', cursive;
 	font-size: 2rem;
 }
 
