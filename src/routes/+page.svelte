@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import SvelteMarkdown from 'svelte-markdown';
-    import 'doodle.css/doodle.css'
+	import 'doodle.css/doodle.css';
 	import imgBg from '$lib/images/bg-image.png';
 
 	let imgSrc: string = '';
@@ -25,7 +25,7 @@
 			const json = await response.json();
 			imgSrc = json.imgSrc;
 			text = s;
-            window.scrollTo(0,0)
+			window.scrollTo(0, 0);
 		} catch (e: any) {
 			error = e;
 		}
@@ -63,10 +63,10 @@
 </svelte:head>
 
 <section>
-    <h1>GPT Dungeon Crawler</h1>
-    <div class="img" style="background-image: url({imgSrc || imgBg})"></div>
+	<h1>GPT Dungeon Crawler</h1>
+	<div class="img" style="background-image: url({imgSrc || imgBg})"></div>
 
-    <div class="text">
+	<div class="text">
 		{#if text}
 			<SvelteMarkdown source={text} />
 
@@ -93,16 +93,16 @@
 <style>
 	section {
 		display: flex;
-        flex-direction: column;
+		flex-direction: column;
 		width: 100%;
 		min-height: 100vh;
-        background: rgba(26, 26, 26, 1);
+		background: rgba(26, 26, 26, 1);
 	}
 
 	.img {
 		height: 760px;
 		background-attachment: fixed;
-        background: rgb(33, 33, 33);
+		background: rgb(33, 33, 33);
 		background-size: cover;
 		background-position: center center;
 	}
@@ -125,22 +125,22 @@
 		align-items: center;
 	}
 
-    .doodle {
-        background: transparent;
-        color: white;
-    }
+	.doodle {
+		background: transparent;
+		color: white;
+	}
 
-    .doodle input {
-        border-color: white;
-        font-family: 'Caveat', cursive;
-        color: #e8e8e8;
-    }
+	.doodle input {
+		border-color: white;
+		font-family: 'Caveat', cursive;
+		color: #e8e8e8;
+	}
 
-    .doodle button {
-        color: rgb(129, 129, 129);
-        font-family: 'Caveat', cursive;
-        cursor: pointer;
-    }
+	.doodle button {
+		color: rgb(129, 129, 129);
+		font-family: 'Caveat', cursive;
+		cursor: pointer;
+	}
 
 	.text {
 		white-space: pre-line;
