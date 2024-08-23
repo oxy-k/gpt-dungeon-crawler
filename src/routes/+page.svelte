@@ -9,6 +9,8 @@
 	let error: Error | undefined;
 	let answer: string = '';
 	let text: string = '';
+	let page: string = '';
+	let isEnd: boolean = false;
 
 	async function generateImage(s: string) {
 		loading = true;
@@ -46,6 +48,8 @@
 			});
 			const json = await response.json();
 			await generateImage(json.response);
+			page = json.page;
+			isEnd = json.isEnd;
 		} catch (e: any) {
 			error = e;
 		}
@@ -63,7 +67,12 @@
 </svelte:head>
 
 <section>
-	<h1>GPT Dungeon Crawler</h1>
+	<h1>
+		GPT Dungeon Crawler
+		{#if page}
+			- {isEnd ? 'End' : page}
+		{/if}
+	</h1>
 	<div class="img" style="background-image: url({imgSrc || imgBg})"></div>
 
 	<div class="text">
@@ -75,14 +84,18 @@
 			{/if}
 
 			<div class="input doodle">
-				<input bind:value={answer} placeholder="Your answer" />
-				<button on:click={generateText} disabled={loading}>
-					{#if !loading}
-						submit
-					{:else}
-						loading...
-					{/if}
-				</button>
+				{#if isEnd}
+					<a data-sveltekit-reload href="/">Restart</a>
+				{:else}
+					<input bind:value={answer} placeholder="Your answer" />
+					<button on:click={generateText} disabled={loading}>
+						{#if !loading}
+							submit
+						{:else}
+							loading...
+						{/if}
+					</button>
+				{/if}
 			</div>
 		{:else}
 			Loading ...
@@ -99,20 +112,18 @@
 		background: rgba(26, 26, 26, 1);
 	}
 
-	.img {
-		height: 760px;
-		background-attachment: fixed;
-		background: rgb(33, 33, 33);
-		background-size: cover;
-		background-position: center center;
-	}
-
 	h1 {
 		width: 100%;
 		color: #cec0ac;
 		text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.6);
 		font-size: 1.2rem;
 		font-family: serif;
+	}
+
+	.img {
+		height: 860px;
+		background: rgb(33, 33, 33) fixed center center;
+		background-size: cover;
 	}
 
 	.error {
@@ -147,5 +158,10 @@
 		background: rgba(26, 26, 26, 1);
 		color: #dadada;
 		padding: 0.8rem 2rem;
+	}
+
+	a {
+		color: #cec0ac;
+		text-decoration: none;
 	}
 </style>
