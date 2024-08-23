@@ -21,3 +21,7 @@ npm run dev
 yarn install
 yarn dev
 ```
+
+## Examples
+
+Example images of a generated story can be found in the [examples](examples) folder. 
